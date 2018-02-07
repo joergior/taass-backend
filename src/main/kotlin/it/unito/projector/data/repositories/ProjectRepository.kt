@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
 
 @RepositoryRestResource
-interface ProjectRepository : JpaRepository<Project, Long>
+interface ProjectRepository : JpaRepository<Project, Long> {
+    fun findByTitle(projectTitle: String): List<Project>
+}
 
 @RepositoryRestResource
 interface RepoRepository : JpaRepository<Repo, Long>
