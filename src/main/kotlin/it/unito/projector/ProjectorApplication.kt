@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Bean
 class ProjectorApplication {
 
     companion object {
+
+        const val BACKEND_URL = "http://localhost:4200"
+
         @JvmStatic
         fun main(args: Array<String>) {
             SpringApplication.run(ProjectorApplication::class.java, *args)
