@@ -4,11 +4,12 @@ import it.unito.projector.data.entities.project.Keynote
 import it.unito.projector.data.entities.project.Project
 import it.unito.projector.data.entities.project.Repo
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
 
 @RepositoryRestResource
 interface ProjectRepository : JpaRepository<Project, Long> {
-    fun findByTitle(projectTitle: String): List<Project>
+    fun findByTitleContaining(@Param("title") title: String): List<Project>
 }
 
 @RepositoryRestResource

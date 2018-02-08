@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/project")
+@RequestMapping("api/projects")
 class ProjectController (val repository: ProjectRepository) {
 
-    @GetMapping("/title/{projectTitle}")
-    fun findProjectByTitle(@PathVariable projectTitle: String)
-            = repository.findByTitle(projectTitle)
 }

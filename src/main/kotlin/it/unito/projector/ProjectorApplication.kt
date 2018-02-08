@@ -6,9 +6,12 @@ import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
+//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer
 
+//@EnableResourceServer
 @SpringBootApplication
 class ProjectorApplication {
+
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
@@ -27,7 +30,12 @@ class ProjectorApplication {
         keyRepo.save(Keynote("Keynote 3", "http://keynote3", "keynote"))
         while(i < 15){
             i++
-
+            val p = Project("Projector $i", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dapibus," +
+                    " ante et ultrices aliquam, felis risus mattis eros, id molestie.")
+            p.addKeynotes(keyRepo.findAll())
+            p.addRepos(repoRepo.findAll())
+            p.addOwner("Lamberto Basti")
+            projectRepo.save(p)
         }
     }
 }

@@ -4,11 +4,12 @@ import javax.persistence.*
 
 @Entity
 data class Project(var title: String, var description: String,
-                   @ElementCollection var ownerIds: ArrayList<Long>? = ArrayList(),
-                   @ElementCollection var repoIds: ArrayList<Long>? = ArrayList(),
-                   @ElementCollection var keynoteIds: ArrayList<Long>? = ArrayList(),
+                   @ElementCollection var ownerIds: MutableList<String>? = ArrayList(),
+                   @ElementCollection var repoIds: MutableList<Long>? = ArrayList(),
+                   @ElementCollection var keynoteIds: MutableList<Long>? = ArrayList(),
                    @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Long = 0){
-    fun addOwner(id: Long) {
+
+    fun addOwner(id: String) {
         if(id !in ownerIds!!) ownerIds!!.add(id)
     }
 
@@ -18,5 +19,17 @@ data class Project(var title: String, var description: String,
 
     fun addKeynote(id: Long){
         if(id !in keynoteIds!!) keynoteIds!!.add(id)
+    }
+
+    fun addOwners(ids: MutableList<String>){
+        ids.forEach{addOwner(it)}
+    }
+
+    fun addRepos(ids: MutableList<Repo>){
+        ids.forEach{addRepo(it.id)}
+    }
+
+    fun addKeynotes(ids: MutableList<Keynote>){
+        ids.forEach{addKeynote(it.id)}
     }
 }
