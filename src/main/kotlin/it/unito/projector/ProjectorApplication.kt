@@ -28,9 +28,9 @@ class ProjectorApplication {
         repoRepo.save(Repo("Repo 1", "http://repo1", "github"))
         repoRepo.save(Repo("Repo 2", "http://repo2", "git"))
         repoRepo.save(Repo("Repo 3", "http://repo3", "bitbucket"))
-        keyRepo.save(Keynote("Keynote 1", "http://keynote1", "keynote"))
-        keyRepo.save(Keynote("Keynote 2", "http://keynote2", "keynote"))
-        keyRepo.save(Keynote("Keynote 3", "http://keynote3", "keynote"))
+        keyRepo.save(Keynote("Keynote 1", "http://keynote1", "presentation"))
+        keyRepo.save(Keynote("Keynote 2", "http://keynote2", "presentation"))
+        keyRepo.save(Keynote("Keynote 3", "http://keynote3", "presentation"))
         while(i < 15){
             i++
             val p = Project("Projector $i", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dapibus," +
