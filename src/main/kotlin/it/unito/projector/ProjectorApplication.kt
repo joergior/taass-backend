@@ -21,7 +21,7 @@ class ProjectorApplication {
 
     companion object {
 
-        const val FRONTEND_URL  = "http://localhost:4200"
+        const val FRONTEND_URL  = "http://localhost:1337"
 
         @JvmStatic
         fun main(args: Array<String>) {
