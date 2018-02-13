@@ -32,4 +32,13 @@ data class Project(var title: String, var description: String,
     fun addKeynotes(ids: MutableList<Keynote>){
         ids.forEach{addKeynote(it.id)}
     }
+
+    override fun toString(): String {
+        return "Project:\n" +
+                "ID: " + id +" | Title: " + title + "\n" +
+                "Description: " + description.substring(0, Math.min(description.length, 15)) + "\n" +
+                "ownerIds: " + ownerIds + "\n" +
+                "repoIds: " + repoIds +"\n" +
+                "keynoteIds: " + keynoteIds
+    }
 }

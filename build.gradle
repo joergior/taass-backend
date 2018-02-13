@@ -54,10 +54,14 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+	compile('mysql:mysql-connector-java')
+	compile 'com.google.code.gson:gson:2.8.2'
 	compile ('com.okta.spring:okta-spring-boot-starter:+') {
 		exclude group: 'org.slf4j', module: 'slf4j-simple'
 	}
-	runtime('com.h2database:h2')
+	compile ('com.okta.spring:okta-spring-sdk:+'){
+		exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
