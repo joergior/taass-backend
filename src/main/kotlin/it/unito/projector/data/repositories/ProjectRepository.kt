@@ -1,6 +1,5 @@
 package it.unito.projector.data.repositories
 
-import it.unito.projector.ProjectorApplication
 import it.unito.projector.data.entities.project.Keynote
 import it.unito.projector.data.entities.project.Project
 import it.unito.projector.data.entities.project.Repo
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin
 
 @EnableResourceServer
 @RepositoryRestResource
-@CrossOrigin(ProjectorApplication.FRONTEND_URL)
+@CrossOrigin("\${projector.properties.frontendUrl}")
 interface ProjectRepository : JpaRepository<Project, Long> {
     @Suppress("unused")
     fun findByTitleContainingIgnoreCase(@Param("title") title: String): List<Project>
@@ -20,7 +19,7 @@ interface ProjectRepository : JpaRepository<Project, Long> {
 
 @EnableResourceServer
 @RepositoryRestResource
-@CrossOrigin(ProjectorApplication.FRONTEND_URL)
+@CrossOrigin("\${projector.properties.frontendUrl}")
 interface RepoRepository : JpaRepository<Repo, Long>{
     @Suppress("unused")
     fun findByTitleContainingIgnoreCase(@Param("title") title: String): List<Repo>
@@ -28,8 +27,9 @@ interface RepoRepository : JpaRepository<Repo, Long>{
 
 @EnableResourceServer
 @RepositoryRestResource
-@CrossOrigin(ProjectorApplication.FRONTEND_URL)
+@CrossOrigin("\${projector.properties.frontendUrl}")
 interface KeynoteRepository : JpaRepository<Keynote, Long>{
     @Suppress("unused")
     fun findByTitleContainingIgnoreCase(@Param("title") title: String): List<Keynote>
 }
+

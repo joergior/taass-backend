@@ -48,7 +48,9 @@ class UserController(val token: String = "00q2WxnFvDXrI5-YThuAMySprvL3JwFM4B7uem
     @GetMapping("/email/{email}")
     @ResponseBody
     fun getUserByEmail(@PathVariable("email") email: String): String {
-        val uri = buildUserURI(client.getUser(email).id)
+        val userId = client.listUsers(email, null, null, null, null).single().id
+        System.out.println(userId)
+        val uri = buildUserURI(userId)
         val get = HttpGet(uri)
         get.addHeader("Authorization", "SSWS " + token)
         val response = httpClient!!.execute(get)

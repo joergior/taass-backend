@@ -11,9 +11,8 @@ class ProjectController (val repository: ProjectRepository) {
 
     @PostMapping("create")
     fun createProject(@RequestBody project: String){
-        System.out.println(project)
         val p: Project = Gson().fromJson(project, Project::class.java)
-        System.out.println(p.toString())
-
+        System.out.println("New project received:\n$p\nAddind to the repo...")
+        repository.save(p)
     }
 }
